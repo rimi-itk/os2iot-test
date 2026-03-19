@@ -1,0 +1,5 @@
+OS2iot-backend/
+OS2iot-docker/
+OS2iot-frontend/
+docker-compose.local.yml
+
