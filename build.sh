@@ -20,7 +20,7 @@ git -C "$dir" reset --hard origin/"$branch"
 # https://github.com/itk-dev/OS2iot-backend/tree/$branch
 repo=https://github.com/itk-dev/OS2iot-backend
 branch=feature/docker-setup-cleanup
-dir=OS2iot-backend
+dir=OS2IoT-backend
 
 git clone "$repo" --branch "$branch" "$dir" || true
 git -C "$dir" fetch
@@ -37,7 +37,7 @@ curl --location https://github.com/OS2iot/OS2iot-backend/pull/296.diff | git -C 
 # https://github.com/itk-dev/OS2iot-frontend/tree/$branch
 repo=https://github.com/itk-dev/OS2iot-frontend
 branch=feature/docker-setup-cleanup
-dir=OS2iot-frontend
+dir=OS2IoT-frontend
 
 git clone "$repo" --branch "$branch" "$dir" || true
 git -C "$dir" fetch
