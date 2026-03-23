@@ -1,0 +1,12 @@
+[submodule "OS2iot-docker"]
+	path = OS2iot-docker
+	url = https://github.com/itk-dev/OS2iot-docker
+	branch = feature/docker-setup-cleanup
+[submodule "OS2IoT-backend"]
+	path = OS2IoT-backend
+	url = https://github.com/rimi-itk/OS2iot-backend
+	branch = test
+[submodule "OS2IoT-frontend"]
+	path = OS2IoT-frontend
+	url = https://github.com/rimi-itk/OS2iot-frontend
+	branch = test

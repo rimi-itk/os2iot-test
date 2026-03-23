@@ -1,0 +1,50 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+
+version: '3'
+
+dotenv:
+  - .env.local
+  - .env
+
+vars:
+  DOCKER_COMPOSE: 'docker compose --file OS2iot-docker/docker-compose.yml --file docker-compose.local.yml'
+  OS2DOCKER_DIR: 'OS2iot-docker'
+
+tasks:
+  start:
+    desc: Start the show
+    cmds:
+      - task: task
+        vars:
+          TASK_ARGS: setup:certs
+
+      - task: compose
+        vars:
+          TASK_ARGS: up --build --detach --wait
+
+      - task: task
+        vars:
+          TASK_ARGS: setup:org
+
+      - task: task
+        vars:
+          TASK_ARGS: setup:chirpstack
+
+      - task: task
+        vars:
+          TASK_ARGS: open
+
+  down:
+    desc: Stop and clean up
+    cmds:
+      - task: compose
+        vars:
+          TASK_ARGS: down --remove-orphans --volumes
+
+  compose:
+    desc: Run compose command, e.g. `task {{.TASK}} -- config`
+    cmd: '{{.DOCKER_COMPOSE}} {{.TASK_ARGS}} {{.CLI_ARGS}}'
+
+  task:
+    desc: Run task in {{.OS2DOCKER_DIR}}
+    cmd: task --dir {{.OS2DOCKER_DIR}} {{.TASK_ARGS}} {{.CLI_ARGS}}
