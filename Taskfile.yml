@@ -48,3 +48,7 @@ tasks:
   task:
     desc: Run task in {{.OS2DOCKER_DIR}}
     cmd: task --dir {{.OS2DOCKER_DIR}} {{.TASK_ARGS}} {{.CLI_ARGS}}
+
+  default:
+    silent: true
+    cmd: task --list
